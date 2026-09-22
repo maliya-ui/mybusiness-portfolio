@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>MALIA — Portfolio</title>
+  <style>
+    :root {
+  --bg: #181a1b;
+  --bg2: #212426;
+  --fg: #ecedee;
+  --accent: #34c3ff;
+  --accent2: #4f8cff;
+  --bar: #56e39f;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  line-height: 1.7;
+}
+header {
+  background: var(--bg2);
+  padding-bottom: 2rem;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5vw 1rem 5vw;
+}
+nav h1 { font-size: 2.2rem; color: var(--accent); letter-spacing: 2px; }
+nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; }
+nav ul li a { color: var(--fg); text-decoration: none; font-weight: 500; transition:.2s; }
+nav ul li a:hover { color: var(--accent); }
+.hero {
+  text-align: center;
+  margin-top: 3rem;
+}
+.hero h2 { font-size: 2.6rem; margin-bottom: .5rem; }
+.hero p { color: #bbb; margin-bottom: 2rem; }
+.cta-btn {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.75rem 2.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 12px #34c3ff30;
+  transition:.2s;
+}
+.cta-btn:hover {background: var(--accent2);color:#fff;}
+
+.section {
+  padding: 4rem 5vw 2rem 5vw;
+  max-width: 1100px;
+  margin: auto;
+}
+.section h2 {
+  border-left: 4px solid var(--accent);
+  padding-left: 12px;
+  margin-bottom: 2rem;
+}
+
+.about-content {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.profile-img {
+  width: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  object-fit: cover;
+  box-shadow: 0 4px 24px #0003;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8rem;
+  margin-top: 1.5rem;
+}
+.skill {
+  font-size: 1.15rem;
+}
+.skill .bar {
+  height: 10px;
+  border-radius: 4px;
+  background: #282c32;
+  margin-top: 7px;
+  box-shadow:inset 0 2px 6px #222;
+  position: relative;
+  overflow: hidden;
+}
+.skill .bar::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom:0;
+  border-radius: 4px;
+}
+.skill .bar.html::after    { width: 90%; background: var(--bar); }
+.skill .bar.css::after     { width: 85%; background: var(--accent); }
+.skill .bar.js::after      { width: 80%; background: #eaeb63; }
+.skill .bar.uiux::after    { width: 70%; background: var(--accent2); }
+
+.projects-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.project-card {
+  background: var(--bg2);
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #1112;
+  width: 280px;
+  padding: 1.3rem;
+  text-align: center;
+}
+.project-card img {
+  width: 100%; max-width: 240px; border-radius: 9px; margin-bottom: 0.7rem;
+  box-shadow: 0 2px 8px #2226;
+}
+
+.gallery-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.gallery-grid img {
+  width: 230px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px #0006;
+  transition:.3s;
+}
+.gallery-grid img:hover {
+  transform: scale(1.06) rotate(-1deg);
+  box-shadow: 0 6px 24px var(--accent2);
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 410px;
+  margin-bottom: 1.2rem;
+}
+#contact-form input, #contact-form textarea {
+  background: #23262b;
+  color: var(--fg);
+  border: 1px solid #3a3d42;
+  border-radius: 6px;
+  padding: .8rem 1.1rem;
+  font-size: 1rem;
+  resize: none;
+  font-family: inherit;
+  outline: none;
+  transition:.2s;
+}
+#contact-form input:focus, #contact-form textarea:focus {
+  border-color: var(--accent);
+}
+#contact-form button {
+  background: var(--accent);
+  color: #181a1b;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 0;
+  font-weight: 600;
+  font-size: 1.12rem;
+  cursor: pointer;
+  transition:.2s;
+}
+#contact-form button:hover {background: var(--accent2);color:#fff;}
+
+.social-links {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+.social-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.18rem;
+  transition:.2s;
+}
+.social-links a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px var(--accent2);
+}
+
+footer {
+  background: #111214;
+  text-align: center;
+  padding: 2.2rem 0 1.3rem 0;
+  color: #aaa;
+  font-size: 1rem;
+  margin-top: 4rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-content { flex-direction: column; gap: 1.5rem; align-items:flex-start;}
+  .projects-grid { flex-direction:column; align-items: center;}
+}
+@media (max-width: 700px) {
+  nav ul { gap: 1rem; }
+  .section { padding: 3rem 2vw 2rem 2vw; }
+  .gallery-grid img { width: 95vw; max-width:330px;height: 140px;}
+  .projects-grid { flex-direction:column; gap:2.2rem;}
+}
+@media (max-width: 500px) {
+  nav { flex-direction:column;gap:1rem;}
+  nav h1 { font-size: 1.5rem;}
+  .section { padding: 2rem 2vw 1rem 2vw; }
+  .project-card { width: 94vw; min-width:0; }
+}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <h1>MALIA</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h2>Welcome to my Portfolio</h2>
+      <p>Creative . Professional . Reliable</p>
+      <a href="#projects" class="cta-btn">View My Work</a>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <img src="assets/mine/photo.jpeg" alt="Profile Pic" class="profile-img" />
+      <p>
+        Hi! I’m <b>Malia</b>, a web developer who loves building beautiful, engaging experiences on the web.
+        <br /><br />
+        I believe every project is a work of art and love working with modern design, code, and animation to bring ideas to life.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="service" class="section">
+    <h2>Services</h2>
+    <div class="skills-list">
+      <div class="skill"><span>full stack developer</span><div class="bar html"></div></div>
+      <div class="skill"><span>starter website</span><h1>80$</h1><div class="bar css"></div></div>
+      <div class="skill"><span>Professional website</span><h1>100$</h1><div class="bar js"></div></div>
+      <div class="skill"><span>premium website</span><h1>150$</h1><div class="bar uiux"></div></div>
+      <div class="skill"><span>graphic design</span><h1>5-30$</h1><div class="bar uiux"></div></div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="assets/mine/ui.jpeg" alt="Project 1" />
+        <h3>Project One</h3>
+        <p>Modern web app using HTML, CSS, JS—responsive, dark mode, great UI.</p>
+      </div>
+      <div class="project-card">
+        <img src="assets/animated-web.png" alt="Project 2" />
+        <h3>Project Two</h3>
+        <p>Single-page portfolio for creatives—animations, smooth scrolling, easy edit.</p>
+        </div>
+        <div class="project-card">
+        <img src="assets/modern-kitchen.png" alt="Project 3" />
+        <h3>Project Two</h3>
+        <p>modern web for creatives—animations, smooth scrolling, easy edit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+      <img src="assets/mine/WhatsApp Image 2026-05-12 at 10.15.10 PM (1).jpeg" alt="Gallery 1" />
+      <img src="assets/jawels-web.png" alt="Gallery 2" />
+      <img src="assets/modern-kitchen.png" alt="Gallery 3" />
+      <img src="assets/gym web.png" alt="Gallery 3" />
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="social-links">
+      <a href="https://maliyaadem@gmail.com " target="_blank">email</a>
+      <a href="https://github.com/maliya-ui" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/maliyaadem-5747a7289(linkedin)" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 MALIA. All rights reserved.</p>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
